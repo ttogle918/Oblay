@@ -1,0 +1,41 @@
+
+//<!-- Sidenav/menu -->
+nav.w3-sidenav.w3-red.w3-collapse.w3-top.w3-large.w3-padding(style="z-index:3;width:300px;font-weight:bold" id="mySidenav")
+  a.w3-padding-xlarge.w3-hide-large.w3-display-topleft.w3-hover-white(href="javascript:void(0)" onclick="w3_close()" style="width:100%;font-size:22px") Close Menu
+  div.w3-container
+    h3.w3-padding-64 Company
+    br
+    h3.w3-padding-64 Name
+  a.w3-padding.w3-hover-white(href="#" onclick="w3_close()") Home
+  a.w3-padding.w3-hover-white(href="#file" onclick="w3_close()") File
+  a.w3-padding.w3-hover-white(href="#font" onclick="w3_close()") Font
+  a.w3-padding.w3-hover-white(href="#layout" onclick="w3_close()") Layout
+  a.w3-padding.w3-hover-white(href="#login" onclick="w3_close()") Login
+  
+  //<!-- Top menu on small screens -->
+header.w3-container.w3-top.w3-hide-large.w3-red.w3-xlarge.w3-padding
+  a.w3-btn.w3-red.w3-border.w3-border-white.w3-margin-right(href="javascript:void(0)" onclick="w3_open()") &#9776
+  span Company Name
+  
+//  <!-- Overlay effect when opening sidenav on small screens -->
+div.w3-overlay.w3-hide-large(onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay")
+
+script.
+// Script to open and close sidenav
+  function w3_open() {
+    document.getElementById("mySidenav").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+ 
+  function w3_close() {
+    document.getElementById("mySidenav").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+  }
+
+  // Modal Image Gallery
+  function onClick(element) {
+    document.getElementById("img01").src = element.src;
+    document.getElementById("modal01").style.display = "block";
+    var captionText = document.getElementById("caption");
+    captionText.innerHTML = element.alt;
+  }
