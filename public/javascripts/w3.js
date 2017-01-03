@@ -7,11 +7,12 @@ function w3_close() {
     document.getElementById("mySidenav").style.display = "none";
     document.getElementById("myOverlay").style.display = "none";
 }
+function fileClose() {
+    document.getElementById('fileOpen').style.display = "none";
+}
 
-// Modal Image Gallery
+// fileOpen
 function onClick(element) {
   document.getElementById("img01").src = element.src;
-  document.getElementById("modal01").style.display = "block";
-  var captionText = document.getElementById("caption");
-  captionText.innerHTML = element.alt;
+  document.getElementById("fileOpen").style.display = "block";
 }

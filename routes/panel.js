@@ -22,14 +22,6 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.get('/dialog', function(req, res, next) {
-  Panel.find({}, function(err, docs) {
-    if (err) {
-      return next(err);
-    }
-    res.send('fileDialog');
-  });
-});
 // 이미지가 클릭되었을 때 그 이미지를 가져오는 라우터.
 router.get('/:id', function(req, res, next) {
   res.render('panel/index',{_id: req.params.id});
@@ -42,6 +34,7 @@ router.post('/', upload.array('photos'), function(req, res, next) {
     _.each(req.files, function(file) {
       var ext = mimetypes[file.mimetype];
       if (!ext) {
+        res.redirect('/');
         return;
       }
       var filename = file.filename + "." + ext;
@@ -58,7 +51,7 @@ router.post('/', upload.array('photos'), function(req, res, next) {
     if (err) {
       return next(err);
     }
-    res.redirect('/panel');
+    res.render('panel/index', {panel : panel});
   });
 });
 
