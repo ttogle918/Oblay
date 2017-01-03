@@ -16,6 +16,15 @@ function onClick(element) {
   document.getElementById("img01").src = element.src;
   document.getElementById("fileOpen").style.display = "block";
 }
+function ToggleId(id){
+  var toggle = document.getElementById(id).style.display;
+  if(toggle=="none"){
+    document.getElementById(id).style.display = "block";
+  }else{
+    document.getElementById(id).style.display = "none";
+  }
+}
+
 // layout change
 function layoutChange(element) {
 
