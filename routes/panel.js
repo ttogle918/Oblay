@@ -11,7 +11,18 @@ var mimetypes = {
   "image/gif": "gif",
   "image/png": "png"
 };
-
+var layoutList = [
+  "w3-display-topleft",  "w3-display-topright",
+  "w3-display-bottomleft", "w3-display-bottomright",
+  "w3-display-middle", "w3-display-left, w3-display-right",
+  "w3-display-topmiddle", "w3-display-bottommiddle",
+  "w3-display-container", "w3-display-hover"
+];
+var shapeList = [
+  "w3-circle", "w3-round-small", "w3-round", "w3-round-medium",
+  "w3-round-large", "w3-round-xlarge", "w3-round-xxlarge",
+  "w3-round-jumbo"
+];
 /* GET posts listing. */
 router.get('/', function(req, res, next) {
   Panel.find({}, function(err, docs) {
@@ -51,7 +62,7 @@ router.post('/', upload.array('photos'), function(req, res, next) {
     if (err) {
       return next(err);
     }
-    res.render('panel/index', {panel : panel});
+    res.render('panel/index', {panel : panel, layoutList : layoutList});
   });
 });
 
