@@ -10,6 +10,9 @@ function w3_close() {
 function fileClose() {
   document.getElementById('fileOpen').style.display = "none";
 }
+function fileClose() {
+    document.getElementById('fileOpen').style.display = "none";
+}
 
 // fileOpen
 function onClick(element) {

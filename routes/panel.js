@@ -55,6 +55,7 @@ router.post('/', upload.array('photos'), function(req, res, next) {
       var ext = mimetypes[file.mimetype];
       if (!ext) {
         res.redirect('/');
+        req.flash('danger', '이미지 파일이 아닙니다.');
         return;
       }
       var filename = file.filename + "." + ext;
