@@ -1,0 +1,19 @@
+doctype html
+html(lang='ko')
+div(id="dialog-form" title="Create new user")
+  p.validateTips All form fields are required.
+  fieldset
+    label(for="name") Name
+    form(action='/panel', method='POST', enctype="multipart/form-data")
+      .form-group
+        label(for='images') 이미지 1
+        input.form-control(type="file", name='photos')
+      .form-group
+        label(for='images') 이미지 2
+        input.form-control(type="file", name='photos')
+      .form-group
+        label(for='images') 이미지 3
+        input.form-control(type="file", name='photos')
+      .form-action          
+      //<!-- Allow form submission with keyboard without duplicating the dialog button -->
+        input(type="submit" tabindex="-1" style="position:absolute; top:-1000px")

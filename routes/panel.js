@@ -14,7 +14,7 @@ var mimetypes = {
 
 /* GET posts listing. */
 router.get('/', function(req, res, next) {
-  Post.find({}, function(err, docs) {
+  Panel.find({}, function(err, docs) {
     if (err) {
       return next(err);
     }
@@ -22,8 +22,17 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.get('/new', function(req, res, next) {
-  res.render('panel/new');
+router.get('/dialog', function(req, res, next) {
+  Panel.find({}, function(err, docs) {
+    if (err) {
+      return next(err);
+    }
+    res.send('fileDialog');
+  });
+});
+// 이미지가 클릭되었을 때 그 이미지를 가져오는 라우터.
+router.get('/:id', function(req, res, next) {
+  res.render('panel/index',{_id: req.params.id});
 });
 
 router.post('/', upload.array('photos'), function(req, res, next) {
@@ -42,34 +51,26 @@ router.post('/', upload.array('photos'), function(req, res, next) {
   }
 
   var panel = new Panel({
-    title: req.body.title,
-    textbox: req.body.textbox,
-    images: images,
-    content: req.body.content
+    images: images
   });
 
-  post.save(function(err) {
+  panel.save(function(err) {
     if (err) {
       return next(err);
     }
-    res.redirect('/posts');
+    res.redirect('/panel');
   });
 });
 
 router.get('/:id', function(req, res, next) {
-  Post.findById(req.params.id, function(err, post) {
+  Panel.findById(req.params.id, function(err, panel) {
     if (err) {
       return next(err);
     }
-    Comment.find({post: post.id}, function(err, comments) {
-      if (err) {
-        return next(err);
-      }
-      res.render('posts/show', {post: post, comments: comments});
-    });
+    res.render('panel/show', {panel: panel});
   });
 });
-
+/*
 router.post('/:id/comments', function(req, res, next) {
   var comment = new Comment({
     post: req.params.id,
@@ -89,5 +90,5 @@ router.post('/:id/comments', function(req, res, next) {
     });
   });
 });
-
+*/
 module.exports = router;

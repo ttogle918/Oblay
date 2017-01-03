@@ -62,7 +62,7 @@ configAuth(passport);
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('panel', panel);
+app.use('/panel', panel);
 routeAuth(app, passport);
 
 // catch 404 and forward to error handler
