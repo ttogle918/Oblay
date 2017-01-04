@@ -35,7 +35,16 @@ router.get('/', function(req, res, next) {
 
 // 이미지가 클릭되었을 때 그 이미지를 가져오는 라우터.
 router.get('/:id', function(req, res, next) {
-  res.render('panel/index',{_id: req.params.id});
+  console.log(req.params.id);
+  var panel = new Panel({
+    images: images
+  });
+  panel.save(function(err) {
+    if (err) {
+      return next(err);
+    }
+    res.render('panel/index', {panel:panel, layoutList:layoutList, shapeList:shapeList});
+  });
 });
 
 router.post('/', upload.array('photos'), function(req, res, next) {
@@ -46,6 +55,10 @@ router.post('/', upload.array('photos'), function(req, res, next) {
       var ext = mimetypes[file.mimetype];
       if (!ext) {
         res.redirect('/');
+<<<<<<< HEAD
+=======
+        req.flash('danger', '이미지 파일이 아닙니다.');
+>>>>>>> 6e578c4a78dd7a60ad8a88df18cf0dc9d2b92c84
         return;
       }
       var filename = file.filename + "." + ext;
@@ -62,7 +75,11 @@ router.post('/', upload.array('photos'), function(req, res, next) {
     if (err) {
       return next(err);
     }
+<<<<<<< HEAD
     res.render('panel/index', {panel : panel, layoutList : layoutList});
+=======
+    res.render('panel/index', {panel:panel, layoutList:layoutList, shapeList:shapeList});
+>>>>>>> 6e578c4a78dd7a60ad8a88df18cf0dc9d2b92c84
   });
 });
 
