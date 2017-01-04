@@ -4,42 +4,14 @@ block content
     .w3-row-padding
       .w3-half
         each img in panel.images
-        button layout
-          table.table
-            tr
-              each list in layoutList
-                th= list
-          button shape
-          table.table
-            tr
-             th 
-             th
-          img.img-rounded.img-responsive(src=img style='width:100%' id='img' onclick='addButton(this)')
-          br
-
-  script.
-    function addButton(element){
-      if($('element'))
-      var table = document.createElement("table");
-      var node = document.createNode("This is new.");
-      para.appendChile(node);
-      
-  //    $('element').addClass
-    }
-    $(document).ready(function(){
-      $("button").click(function(){
-        $("table").toggle();
-      });
-    });
           button.w3-btn(style='display: none' id='imgButton' onclick="ToggleId('layout')") layout
           table.w3-table(id='layout' style='display: none')
             tr
               each list in layoutList
                 th= list
-          button.w3-btn.w3-border-right(style='display: none' id='imgButton' onclick="ToggleId('shape')") shape
+          button.w3-btn(style='display: none' id='imgButton' onclick="ToggleId('shape')") shape
           table.w3-table(id='shape' style='display: none')
             tr
-              each List in shapeList
-                th= List
+              each i in shapeList
+                th= i
           img.btn.img-rounded.img-responsive(type='button' src=img style='width:100%' id='img' onclick="ToggleId('imgButton')")
-  h4 Hello 그림판

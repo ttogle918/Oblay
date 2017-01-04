@@ -55,10 +55,7 @@ router.post('/', upload.array('photos'), function(req, res, next) {
       var ext = mimetypes[file.mimetype];
       if (!ext) {
         res.redirect('/');
-<<<<<<< HEAD
-=======
         req.flash('danger', '이미지 파일이 아닙니다.');
->>>>>>> 6e578c4a78dd7a60ad8a88df18cf0dc9d2b92c84
         return;
       }
       var filename = file.filename + "." + ext;
@@ -75,11 +72,7 @@ router.post('/', upload.array('photos'), function(req, res, next) {
     if (err) {
       return next(err);
     }
-<<<<<<< HEAD
-    res.render('panel/index', {panel : panel, layoutList : layoutList});
-=======
     res.render('panel/index', {panel:panel, layoutList:layoutList, shapeList:shapeList});
->>>>>>> 6e578c4a78dd7a60ad8a88df18cf0dc9d2b92c84
   });
 });
 
